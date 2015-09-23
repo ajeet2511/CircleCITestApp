@@ -1,6 +1,8 @@
 package com.ajeetkumar.circlecitestapp;
 
 
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.test.ActivityInstrumentationTestCase2;
 
 import org.junit.Before;
@@ -24,11 +26,21 @@ public class FirstTestCase extends ActivityInstrumentationTestCase2<MainActivity
         super(MainActivity.class);
     }
 
+
     @Before
     public void setUp() throws Exception {
         super.setUp();
         injectInstrumentation(getInstrumentation());
         mainActivity = getActivity();
+
+        try {
+            KeyguardManager mKeyGuardManager = (KeyguardManager) mainActivity.getSystemService(Context.KEYGUARD_SERVICE);
+            KeyguardManager.KeyguardLock mLock = mKeyGuardManager.newKeyguardLock("test");
+            mLock.disableKeyguard();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
