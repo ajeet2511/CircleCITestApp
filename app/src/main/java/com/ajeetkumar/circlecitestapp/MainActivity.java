@@ -1,5 +1,7 @@
 package com.ajeetkumar.circlecitestapp;
 
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +20,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //editText = (EditText) findViewById(R.id.test_edit_text);
+
+        try {
+            KeyguardManager mKeyGuardManager = (KeyguardManager) getApplicationContext().getSystemService(Context.KEYGUARD_SERVICE);
+            KeyguardManager.KeyguardLock mLock = mKeyGuardManager.newKeyguardLock("test");
+            mLock.disableKeyguard();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
