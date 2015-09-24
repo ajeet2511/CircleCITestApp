@@ -33,14 +33,6 @@ public class FirstTestCase extends ActivityInstrumentationTestCase2<MainActivity
         injectInstrumentation(getInstrumentation());
         mainActivity = getActivity();
 
-        try {
-            KeyguardManager mKeyGuardManager = (KeyguardManager) mainActivity.getSystemService(Context.KEYGUARD_SERVICE);
-            KeyguardManager.KeyguardLock mLock = mKeyGuardManager.newKeyguardLock("test");
-            mLock.disableKeyguard();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Test
