@@ -37,9 +37,9 @@ public class FirstTestCase extends ActivityInstrumentationTestCase2<MainActivity
     @Test
     public void testChangeText_sameActivity() {
         // Fill some dummy text into the text view
-        //onView(withId(R.id.test_edit_text)).perform(typeText("just a test text."));
+        onView(withId(R.id.test_edit_text)).perform(typeText("just a test text."));
 
         // Click Button to go the second activity
-        //onView(withId(R.id.text_btn)).perform(click());
+        onView(withId(R.id.text_btn)).perform(click());
     }
 }
