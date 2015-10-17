@@ -32,7 +32,6 @@ public class FirstTestCase extends ActivityInstrumentationTestCase2<MainActivity
         super.setUp();
         injectInstrumentation(getInstrumentation());
         mainActivity = getActivity();
-
     }
 
     @Test
