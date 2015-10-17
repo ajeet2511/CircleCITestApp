@@ -23,6 +23,8 @@ test:
             parallel: true
         - circle-android wait-for-boot
     override:
+        - ./gradlew assembleDebug
+        - adb install /home/ubuntu/your-app-name/app/build/outputs/apk/build.apk
         # run the test
         - (./gradlew cAT):
             timeout: 360
