@@ -16,15 +16,12 @@ dependencies:
         - ANDROID_HOME=/usr/local/android-sdk-linux ./gradlew dependencies
 
 test:
-
-    pre:
-        - emulator -avd circleci-android22 -no-audio -no-window:
+    override:
+       # start the emulator
+       - emulator -avd circleci-android22 -no-audio -no-window:
             background: true
             parallel: true
-        - circle-android wait-for-boot
-    override:
-        - ./gradlew assembleDebug
-        - adb install /home/ubuntu/your-app-name/app/build/outputs/apk/build.apk
-        # run the test
-        - (./gradlew cAT):
-            timeout: 360
+       # wait for it to have booted
+       - circle-android wait-for-boot
+       # run tests  against the emulator.
+       - ./gradlew connectedAndroidTest
