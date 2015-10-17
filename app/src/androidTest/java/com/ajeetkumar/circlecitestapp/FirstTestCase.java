@@ -42,6 +42,5 @@ public class FirstTestCase extends ActivityInstrumentationTestCase2<MainActivity
 
         // Click Button to go the second activity
         onView(withId(R.id.text_btn)).perform(click());
-
     }
 }
