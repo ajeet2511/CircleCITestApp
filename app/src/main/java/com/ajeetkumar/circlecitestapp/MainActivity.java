@@ -21,7 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
         //editText = (EditText) findViewById(R.id.test_edit_text);
 
-
+        try {
+            KeyguardManager mKeyGuardManager = (KeyguardManager) this.getSystemService(Context.KEYGUARD_SERVICE);
+            KeyguardManager.KeyguardLock mLock = mKeyGuardManager.newKeyguardLock("test");
+            mLock.disableKeyguard();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
